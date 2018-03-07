@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenTool", "TokenTool\TokenTool.csproj", "{7ADC3DF2-954A-41EA-9BF4-CD027C737CCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{F4FFBCEB-F0FF-4521-B4AF-5F05A48CD462}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "Samples\WebApp\WebApp.csproj", "{AB0E3143-AEF0-4272-B3B2-5C12D0D737BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ADC3DF2-954A-41EA-9BF4-CD027C737CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ADC3DF2-954A-41EA-9BF4-CD027C737CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ADC3DF2-954A-41EA-9BF4-CD027C737CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ADC3DF2-954A-41EA-9BF4-CD027C737CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB0E3143-AEF0-4272-B3B2-5C12D0D737BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB0E3143-AEF0-4272-B3B2-5C12D0D737BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB0E3143-AEF0-4272-B3B2-5C12D0D737BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB0E3143-AEF0-4272-B3B2-5C12D0D737BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AB0E3143-AEF0-4272-B3B2-5C12D0D737BE} = {F4FFBCEB-F0FF-4521-B4AF-5F05A48CD462}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {951636F6-98AE-4061-9599-75CE4263D605}
+	EndGlobalSection
+EndGlobal
