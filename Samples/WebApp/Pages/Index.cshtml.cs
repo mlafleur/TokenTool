@@ -13,6 +13,7 @@ namespace WebApp.Pages
         }
 
         public string V1AuthUri { get; set; }
+        public string V1ImplicitUri { get; set; }
         public string V2AdminUri { get; set; }
         public string V2AuthUri { get; set; }
         public string V2ImplicitUri { get; set; }
@@ -34,6 +35,16 @@ namespace WebApp.Pages
                 Prompt="login"
             };
             V1AuthUri = authorizationCodeGrant.AuthorizationUri;
+
+            var implicitGrant = new TokenTool.MicrosoftV1.ImplicitGrant()
+            {
+                ClientId = config["v1Endpoint:clientId"],
+                RedirectUri = "http://localhost:64191/auth/implicit",
+                Resource = "https://graph.microsoft.com",
+                Prompt = "consent"
+            };
+            V1ImplicitUri = implicitGrant.AuthorizationUri;
+
         }
 
         private void Setupv2()
