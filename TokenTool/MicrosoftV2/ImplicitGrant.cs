@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace TokenTool.MicrosoftV2
 {
-    public class ImplicitGrant
+    public class ImplicitGrant : v2EndpointBase
     {
         public ImplicitGrant()
         {
@@ -22,28 +22,17 @@ namespace TokenTool.MicrosoftV2
         public string AuthorizationUri { get { return GenerateAuthorizationUri().ToString(); } }
 
         public string ClientId { get; set; }
-
         public string Code { get; set; }
-
         public string DomainHint { get; set; }
-
         public string GrantType { get; }
-
         public string LoginHint { get; set; }
-
         public string Nonce { get; set; }
         public string Prompt { get; set; }
-
         public string RedirectUri { get; set; }
-
         public string ResponseMode { get; }
-
         public string ResponseType { get; set; }
-
         public string Scope { get; set; }
-
         public string State { get; set; }
-
         public string Tenant { get; set; }
 
         /// <summary>
@@ -52,13 +41,13 @@ namespace TokenTool.MicrosoftV2
         /// <returns></returns>
         public AccessToken ProcessAccessToken(string jsonResult)
         {
-            return JsonConvert.DeserializeObject<AccessToken>(jsonResult);
+            return BaseProcessAccessToken(jsonResult);
         }
 
         private System.Uri GenerateAuthorizationUri()
         {
             /// Construct a Query String
-            var q = new Utils.QueryParameterCollection
+            var queryParams = new Utils.QueryParameterCollection
             {
                 { "client_id", ClientId },
                 { "response_type", ResponseType },
@@ -74,10 +63,10 @@ namespace TokenTool.MicrosoftV2
 
             // Validate we have the required keys
             var requiredKeys = new List<string>() { "client_id", "response_type", "scope" };
-            if (q.ValidateKeys(requiredKeys) == false)
+            if (queryParams.ValidateKeys(requiredKeys) == false)
                 throw new MissingFieldException($"One or more required parameters are missing or empty: {string.Join(",", requiredKeys.ToArray())}");
 
-            return new Uri($"https://login.microsoftonline.com/{Tenant}/oauth2/v2.0/authorize?{q.ToQueryString()}");
+            return BaseAuthorizationUri(queryParams, Tenant);
         }
     }
 }

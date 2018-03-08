@@ -8,7 +8,7 @@ using TokenTool.Utils;
 
 namespace TokenTool.MicrosoftV1
 {
-    public class ImplicitGrant
+    public class ImplicitGrant : v1EndpointBase
     {
         public ImplicitGrant()
         {
@@ -43,13 +43,13 @@ namespace TokenTool.MicrosoftV1
         /// <returns></returns>
         public AccessToken ProcessAccessToken(string jsonResult)
         {
-            return JsonConvert.DeserializeObject<AccessToken>(jsonResult);
+            return BaseProcessAccessToken(jsonResult);
         }
 
         private System.Uri GenerateAuthorizationUri()
         {
             /// Construct a Query String
-            var q = new Utils.QueryParameterCollection
+            var queryParams = new Utils.QueryParameterCollection
             {
                 { "client_id", ClientId },
                 { "response_type", ResponseType },
@@ -62,8 +62,7 @@ namespace TokenTool.MicrosoftV1
                 { "domain_hint", DomainHint },
                 { "nonce", Nonce }
             };
-
-            return new Uri($"https://login.microsoftonline.com/{Tenant}/oauth2/authorize?{q.ToQueryString()}");
+            return BaseAuthorizationUri(queryParams, Tenant);
         }
     }
 }

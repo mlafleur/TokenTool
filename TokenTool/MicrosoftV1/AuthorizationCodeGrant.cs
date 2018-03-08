@@ -8,10 +8,9 @@ using TokenTool.Utils;
 
 namespace TokenTool.MicrosoftV1
 {
-    public class AuthorizationCodeGrant
+    public class AuthorizationCodeGrant : v1EndpointBase
     {
         private AuthorizationCode authorizationCode;
-        private HttpClient httpClient;
 
         public AuthorizationCodeGrant(HttpClient httpClient)
         {
@@ -58,18 +57,8 @@ namespace TokenTool.MicrosoftV1
 
         public async Task<AccessToken> ProcessAuthorizationResponse(string queryString)
         {
-            var data = new QueryParameterCollection(queryString);
-
-            // See if we have any errors
-            if (data.AllKeys.Contains("error"))
-            {
-                throw new Exception($"{data.Get("error")} - {data.Get("error_description")}");
-            }
-            else
-            {
-                this.authorizationCode = JsonConvert.DeserializeObject<AuthorizationCode>(data.ToJson());
-            }
-            return await RequestAccessToken(this.authorizationCode.Code);
+            var authCode =  BaseProcessAuthResponse(queryString);
+            return await RequestAccessToken(authCode.Code);
         }
 
         /// <summary>
@@ -85,7 +74,7 @@ namespace TokenTool.MicrosoftV1
         /// </summary>
         public async Task<AccessToken> RefreshAccessToken(string refreshToken, string resrouce)
         {
-            var q = new QueryParameterCollection
+            var payload = new QueryParameterCollection
                 {
                     { "grant_type", "refresh_token" },
                     { "client_id", ClientId },
@@ -94,7 +83,7 @@ namespace TokenTool.MicrosoftV1
                     { "resource", resrouce},
                     { "refresh_token", refreshToken }
                 };
-            return await GetAccessToken(q);
+            return await BaseGetAccessToken(payload, Tenant);
         }
 
         /// <summary>
@@ -102,7 +91,7 @@ namespace TokenTool.MicrosoftV1
         /// </summary>
         public async Task<AccessToken> RequestAccessToken(string authorizationCode)
         {
-            var q = new QueryParameterCollection
+            var payload = new QueryParameterCollection
                 {
                     { "grant_type", "authorization_code" },
                     { "client_id", ClientId },
@@ -111,17 +100,16 @@ namespace TokenTool.MicrosoftV1
                     { "resource", Resource},
                     { "code", authorizationCode }
                 };
-            return await GetAccessToken(q);
+            return await BaseGetAccessToken(payload, Tenant);
         }
 
         private System.Uri GenerateAuthorizationUri()
         {
             /// Construct a Query String
-            var q = new Utils.QueryParameterCollection
+            var queryParams = new QueryParameterCollection
             {
                 { "client_id", ClientId },
                 { "response_type", ResponseType },
-                /*{ "resource", Resource },*/
                 { "redirect_uri", RedirectUri },
                 { "response_mode", ResponseMode },
                 { "state", State },
@@ -130,37 +118,7 @@ namespace TokenTool.MicrosoftV1
                 { "domain_hint", DomainHint }
             };
 
-            // Validate we have the required keys
-            var requiredKeys = new List<string>() { "client_id", "response_type" };
-            if (q.ValidateKeys(requiredKeys) == false)
-                throw new MissingFieldException($"One or more required parameters are missing or empty: {string.Join(",", requiredKeys.ToArray())}");
-
-            return new Uri($"https://login.microsoftonline.com/{Tenant}/oauth2/authorize?{q.ToQueryString()}");
-        }
-
-        private async Task<AccessToken> GetAccessToken(QueryParameterCollection queryParameterCollection)
-        {
-            var uriBuilder = new System.UriBuilder($"https://login.microsoftonline.com/{Tenant}/oauth2/token");
-
-            var result = await httpClient.PostAsync(uriBuilder.ToString(), queryParameterCollection.ToFormUrlEncodedContent());
-
-            if (!result.IsSuccessStatusCode)
-            {
-                throw new Exception(await result.Content.ReadAsStringAsync());
-            }
-            else
-            {
-                return JsonConvert.DeserializeObject<AccessToken>(await result.Content.ReadAsStringAsync());
-            }
-        }
-
-        private class AuthorizationCode
-        {
-            [JsonProperty(PropertyName = "code")]
-            public string Code { get; private set; }
-
-            [JsonProperty(PropertyName = "state")]
-            public string State { get; private set; }
+            return BaseAuthorizationUri(queryParams, Tenant);
         }
     }
 }
