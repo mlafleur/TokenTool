@@ -57,8 +57,10 @@ namespace TokenTool.MicrosoftV1
 
         public async Task<AccessToken> ProcessAuthorizationResponse(string queryString)
         {
-            var authCode =  BaseProcessAuthResponse(queryString);
-            return await RequestAccessToken(authCode.Code);
+            var authCode = BaseProcessAuthResponse(queryString);
+            var accessToken = await RequestAccessToken(authCode.Code);
+            accessToken.State = authCode.State;
+            return accessToken;
         }
 
         /// <summary>
