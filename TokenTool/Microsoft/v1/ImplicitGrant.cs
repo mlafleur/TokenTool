@@ -30,6 +30,7 @@ namespace TokenTool.Microsoft.v1
         public string ResponseMode { get; }
         public string ResponseType { get; set; }
         public string State { get; set; }
+        public string Scope { get; set; }
         public string Tenant { get; set; }
 
         /// <summary>
@@ -52,6 +53,7 @@ namespace TokenTool.Microsoft.v1
                 { "redirect_uri", RedirectUri },
                 { "response_mode", ResponseMode },
                 { "state", State },
+                { "scope", Scope},
                 { "prompt", Prompt },
                 { "login_hint", LoginHint },
                 { "domain_hint", DomainHint },

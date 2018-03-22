@@ -31,6 +31,7 @@ namespace WebApp.Pages
             {
                 ClientId = config["v1Endpoint:clientId"],
                 Resource = config["v1Endpoint:defaultResource"],
+                Scope = config["v1Endpoint:scopes"],
                 RedirectUri = "http://localhost:64191/auth/v1authcode",
                 Prompt="login"
             };
@@ -39,7 +40,8 @@ namespace WebApp.Pages
             var implicitGrant = new TokenTool.Microsoft.v1.ImplicitGrant()
             {
                 ClientId = config["v1Endpoint:clientId"],
-                RedirectUri = "http://localhost:64191/auth/implicit",
+                Scope = config["v1Endpoint:scopes"],
+                RedirectUri = "http://localhost:64191/",
                 Resource = "https://graph.microsoft.com",
                 Prompt = "consent"
             };
@@ -64,7 +66,7 @@ namespace WebApp.Pages
             var implicitGrant = new TokenTool.Microsoft.v2.ImplicitGrant()
             {
                 ClientId = config["v2Endpoint:clientId"],
-                RedirectUri = "http://localhost:64191/auth/implicit",
+                RedirectUri = "http://localhost:64191/",
                 Scope = "user.read",
                 Prompt = "consent"
             };

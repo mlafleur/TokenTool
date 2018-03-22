@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Authorization Code Grant</h5>
                         <p class="card-text"></p>
-                        <a href="@Model.V2AdminUri" class="btn btn-primary">Start OAuth Flow</a>
+                        <a href="@Model.V2AuthUri" class="btn btn-primary">Start OAuth Flow</a>
                     </div>
                 </div>
             </div>
@@ -78,3 +78,22 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        var urlParams;
+        (window.onpopstate = function () {
+            var match,
+                pl = /\+/g,  // Regex for replacing addition symbol with a space
+                search = /([^&=]+)=?([^&]*)/g,
+                decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                query = window.location.hash.substring(1);
+
+            urlParams = {};
+            while (match = search.exec(query))
+                urlParams[decode(match[1])] = decode(match[2]);
+
+            console.log(urlParams);
+        })();
+    </script>
+}

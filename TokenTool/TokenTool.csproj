@@ -9,6 +9,8 @@
     <Copyright>2018 by Marc LaFleur</Copyright>
     <AssemblyVersion>0.0.2.0</AssemblyVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/mlafleur/TokenTool.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
