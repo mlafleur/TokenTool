@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using TokenTool.Utils;
 
@@ -10,8 +6,6 @@ namespace TokenTool.MicrosoftV1
 {
     public class AuthorizationCodeGrant : v1EndpointBase
     {
-        private AuthorizationCode authorizationCode;
-
         public AuthorizationCodeGrant(HttpClient httpClient)
         {
             this.httpClient = httpClient;
@@ -34,25 +28,16 @@ namespace TokenTool.MicrosoftV1
         public string AuthorizationUri { get { return GenerateAuthorizationUri().ToString(); } }
 
         public string ClientId { get; set; }
-
         public string ClientSecret { get; set; }
-
         public string DomainHint { get; set; }
-
         public string LoginHint { get; set; }
-
         public string Prompt { get; set; }
-
         public string RedirectUri { get; set; }
-
         public string Resource { get; set; }
-
         public string ResponseMode { get; set; }
-
         public string ResponseType { get; set; }
-
+        public string Scope { get; set; }
         public string State { get; set; }
-
         public string Tenant { get; set; }
 
         public async Task<AccessToken> ProcessAuthorizationResponse(string queryString)
@@ -82,6 +67,7 @@ namespace TokenTool.MicrosoftV1
                     { "client_id", ClientId },
                     { "client_secret", ClientSecret },
                     { "redirect_uri", RedirectUri },
+                    { "scope", Scope},
                     { "resource", resrouce},
                     { "refresh_token", refreshToken }
                 };
@@ -100,6 +86,7 @@ namespace TokenTool.MicrosoftV1
                     { "client_secret", ClientSecret },
                     { "redirect_uri", RedirectUri },
                     { "resource", Resource},
+                    { "scope", Scope},
                     { "code", authorizationCode }
                 };
             return await BaseGetAccessToken(payload, Tenant);

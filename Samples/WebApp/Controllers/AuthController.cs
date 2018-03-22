@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TokenTool.MicrosoftV2;
+using TokenTool;
 
 namespace WebApp.Controllers
 {
@@ -32,6 +32,7 @@ namespace WebApp.Controllers
             {
                 ClientId = config["v1Endpoint:clientId"],
                 ClientSecret = config["v1Endpoint:clientSecret"],
+                Scope = config["v1Endpoint:scopes"],
                 RedirectUri = "http://localhost:64191/auth/v1authcode",
                 Resource = "https://graph.microsoft.com"
             };
@@ -42,7 +43,11 @@ namespace WebApp.Controllers
                 refreshedToken = await authorizationCodeGrant.RefreshAccessToken(accessToken.RefreshToken);
             }
 
-            return new JsonResult(refreshedToken, new JsonSerializerSettings() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
+
+            var idToken = TokenTool.MicrosoftV1.IDToken.Parse(accessToken.IdToken);
+
+            return new JsonResult(new { accessToken, refreshedToken, idToken },
+                new JsonSerializerSettings() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
         }
 
         #endregion v1 Endpoint Handlers
@@ -52,7 +57,7 @@ namespace WebApp.Controllers
         [HttpGet("auth/admin")]
         public IActionResult GetV2Admin()
         {
-            var adminConsentGrant = new AdminConsentGrant(config["v2Endpoint:clientId"], "http://localhost:64191/auth/admin");
+            var adminConsentGrant = new TokenTool.MicrosoftV2.AdminConsentGrant(config["v2Endpoint:clientId"], "http://localhost:64191/auth/admin");
             var result = adminConsentGrant.ProcessAuthorizationResponse(this.Request.QueryString.ToString());
 
             return new JsonResult(result, new JsonSerializerSettings() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
@@ -61,12 +66,12 @@ namespace WebApp.Controllers
         [HttpGet("auth/authcode")]
         public async Task<IActionResult> GetV2AuthCodeAsync()
         {
-            AccessToken accessToken;
-            AccessToken refreshedToken;
+            TokenTool.MicrosoftV2.AccessToken accessToken;
+            TokenTool.MicrosoftV2.AccessToken refreshedToken;
 
             var queryString = this.Request.QueryString.ToString();
 
-            var authorizationCodeGrant = new AuthorizationCodeGrant()
+            var authorizationCodeGrant = new TokenTool.MicrosoftV2.AuthorizationCodeGrant()
             {
                 ClientId = config["v2Endpoint:clientId"],
                 ClientSecret = config["v2Endpoint:clientSecret"],
@@ -80,7 +85,7 @@ namespace WebApp.Controllers
                 refreshedToken = await authorizationCodeGrant.RefreshAccessToken(accessToken);
             }
 
-            var idToken = IDToken.Parse(accessToken.IdToken);
+            var idToken = TokenTool.MicrosoftV2.IDToken.Parse(accessToken.IdToken);
 
             return new JsonResult(new { accessToken, refreshedToken, idToken },
                 new JsonSerializerSettings() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
@@ -89,7 +94,7 @@ namespace WebApp.Controllers
         [HttpGet("auth/cc")]
         public async Task<IActionResult> GetV2ClientCredentialsAsync()
         {
-            var clientCredentialsGrant = new ClientCredentialsGrant()
+            var clientCredentialsGrant = new TokenTool.MicrosoftV2.ClientCredentialsGrant()
             {
                 ClientId = config["v2Endpoint:clientId"],
                 ClientSecret = config["v2Endpoint:clientSecret"],

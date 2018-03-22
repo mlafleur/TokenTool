@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using TokenTool.Utils;
+﻿using System;
 
 namespace TokenTool.MicrosoftV1
 {
@@ -23,6 +17,7 @@ namespace TokenTool.MicrosoftV1
         /// The full URI for launching the User Consent stage of the Authentication Code Grant
         /// </summary>
         public string AuthorizationUri { get { return GenerateAuthorizationUri().ToString(); } }
+
         public string ClientId { get; set; }
         public string Code { get; set; }
         public string DomainHint { get; set; }
@@ -31,9 +26,9 @@ namespace TokenTool.MicrosoftV1
         public string Nonce { get; set; }
         public string Prompt { get; set; }
         public string RedirectUri { get; set; }
+        public string Resource { get; set; }
         public string ResponseMode { get; }
         public string ResponseType { get; set; }
-        public string Resource { get; set; }
         public string State { get; set; }
         public string Tenant { get; set; }
 
@@ -66,5 +61,3 @@ namespace TokenTool.MicrosoftV1
         }
     }
 }
-
-

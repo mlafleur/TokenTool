@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace TokenTool.Common
 {
@@ -20,7 +21,7 @@ namespace TokenTool.Common
         /// JSON array of strings that are identifiers for authentication methods used in the authentication.
         /// </summary>
         [JsonProperty(PropertyName = "amr")]
-        public string AuthenticationMethodsReferences { get; set; }
+        public List<string> AuthenticationMethodsReferences { get; set; }
 
         /// <summary>
         /// Time when the End-User authentication occurred.
