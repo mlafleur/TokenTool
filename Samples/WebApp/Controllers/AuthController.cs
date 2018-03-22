@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TokenTool.MicrosoftV2;
@@ -79,7 +80,10 @@ namespace WebApp.Controllers
                 refreshedToken = await authorizationCodeGrant.RefreshAccessToken(accessToken);
             }
 
-            return new JsonResult(refreshedToken, new JsonSerializerSettings() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
+            var idToken = IDToken.Parse(accessToken.IdToken);
+
+            return new JsonResult(new { accessToken, refreshedToken, idToken },
+                new JsonSerializerSettings() { Formatting = Formatting.Indented, NullValueHandling = NullValueHandling.Ignore });
         }
 
         [HttpGet("auth/cc")]

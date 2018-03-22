@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace TokenTool.MicrosoftV2
 {
-    public class ImplicitGrant : v2EndpointBase
+    public class ImplicitGrant : V2EndpointBase
     {
         public ImplicitGrant()
         {

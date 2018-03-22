@@ -4,7 +4,7 @@ using TokenTool.Utils;
 
 namespace TokenTool.MicrosoftV2
 {
-    public class ClientCredentialsGrant : v2EndpointBase
+    public class ClientCredentialsGrant : V2EndpointBase
     {
         public ClientCredentialsGrant(HttpClient httpClient)
         {

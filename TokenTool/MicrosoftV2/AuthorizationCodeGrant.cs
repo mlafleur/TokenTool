@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using TokenTool.Common;
 using TokenTool.Utils;
 
 namespace TokenTool.MicrosoftV2
 {
-    public class AuthorizationCodeGrant : v2EndpointBase
+    public class AuthorizationCodeGrant : V2EndpointBase
     {
         private AuthorizationCode authorizationCode;
 
@@ -59,7 +60,6 @@ namespace TokenTool.MicrosoftV2
         /// </summary>
         public async Task<AccessToken> RefreshAccessToken(AccessToken accessToken)
         {
-            Scope = accessToken.Scope;
             return await RefreshAccessToken(accessToken.RefreshToken);
         }
 

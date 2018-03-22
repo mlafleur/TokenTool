@@ -7,7 +7,7 @@ using TokenTool.Utils;
 
 namespace TokenTool.MicrosoftV2
 {
-    public class v2EndpointBase
+    public class V2EndpointBase
     {
         protected HttpClient httpClient;
 
