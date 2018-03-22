@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TokenTool.Utils;
 
-namespace TokenTool.MicrosoftV2
+namespace TokenTool.Microsoft.v2
 {
     public class ClientCredentialsGrant : V2EndpointBase
     {

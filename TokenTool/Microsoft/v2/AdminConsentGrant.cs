@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TokenTool.Utils;
 
-namespace TokenTool.MicrosoftV2
+namespace TokenTool.Microsoft.v2
 {
     public class AdminConsentGrant
     {

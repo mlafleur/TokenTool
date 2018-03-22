@@ -27,7 +27,7 @@ namespace WebApp.Pages
 
         private void Setupv1()
         {
-            var authorizationCodeGrant = new TokenTool.MicrosoftV1.AuthorizationCodeGrant()
+            var authorizationCodeGrant = new TokenTool.Microsoft.v1.AuthorizationCodeGrant()
             {
                 ClientId = config["v1Endpoint:clientId"],
                 Resource = config["v1Endpoint:defaultResource"],
@@ -36,7 +36,7 @@ namespace WebApp.Pages
             };
             V1AuthUri = authorizationCodeGrant.AuthorizationUri;
 
-            var implicitGrant = new TokenTool.MicrosoftV1.ImplicitGrant()
+            var implicitGrant = new TokenTool.Microsoft.v1.ImplicitGrant()
             {
                 ClientId = config["v1Endpoint:clientId"],
                 RedirectUri = "http://localhost:64191/auth/implicit",
@@ -49,10 +49,10 @@ namespace WebApp.Pages
 
         private void Setupv2()
         {
-            var adminConsentGrant = new TokenTool.MicrosoftV2.AdminConsentGrant(config["v2Endpoint:clientId"], "http://localhost:64191/auth/admin");
+            var adminConsentGrant = new TokenTool.Microsoft.v2.AdminConsentGrant(config["v2Endpoint:clientId"], "http://localhost:64191/auth/admin");
             V2AdminUri = adminConsentGrant.AuthorizationUri;
 
-            var authorizationCodeGrant = new TokenTool.MicrosoftV2.AuthorizationCodeGrant()
+            var authorizationCodeGrant = new TokenTool.Microsoft.v2.AuthorizationCodeGrant()
             {
                 ClientId = config["v2Endpoint:clientId"],
                 Scope = config["v2Endpoint:scopes"],
@@ -61,7 +61,7 @@ namespace WebApp.Pages
             };
             V2AuthUri = authorizationCodeGrant.AuthorizationUri;
 
-            var implicitGrant = new TokenTool.MicrosoftV2.ImplicitGrant()
+            var implicitGrant = new TokenTool.Microsoft.v2.ImplicitGrant()
             {
                 ClientId = config["v2Endpoint:clientId"],
                 RedirectUri = "http://localhost:64191/auth/implicit",
@@ -70,7 +70,7 @@ namespace WebApp.Pages
             };
             V2ImplicitUri = implicitGrant.AuthorizationUri;
 
-            var openIdImplicitGrant = new TokenTool.MicrosoftV2.ImplicitGrant()
+            var openIdImplicitGrant = new TokenTool.Microsoft.v2.ImplicitGrant()
             {
                 ClientId = config["v2Endpoint:clientId"],
                 RedirectUri = "http://localhost:64191/auth/implicit",

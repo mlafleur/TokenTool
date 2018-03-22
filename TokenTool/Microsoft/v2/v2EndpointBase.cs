@@ -5,20 +5,20 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using TokenTool.Utils;
 
-namespace TokenTool.MicrosoftV1
+namespace TokenTool.Microsoft.v2
 {
-    public abstract class v1EndpointBase
+    public class V2EndpointBase
     {
         protected HttpClient httpClient;
 
         protected System.Uri BaseAuthorizationUri(QueryParameterCollection queryParameters, string tenant = "common")
         {
-            return new Uri($"https://login.microsoftonline.com/{tenant}/oauth2/authorize?{queryParameters.ToQueryString()}");
+            return new Uri($"https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?{queryParameters.ToQueryString()}");
         }
 
         protected async Task<AccessToken> BaseGetAccessToken(QueryParameterCollection queryParameters, string tenant = "common")
         {
-            var uriBuilder = new System.UriBuilder($"https://login.microsoftonline.com/{tenant}/oauth2/token");
+            var uriBuilder = new System.UriBuilder($"https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token");
 
             var result = await httpClient.PostAsync(uriBuilder.ToString(), queryParameters.ToFormUrlEncodedContent());
 

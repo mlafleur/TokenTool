@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace TokenTool.MicrosoftV2
+namespace TokenTool.Microsoft
 {
     public class IDToken : Common.IDTokenBase
     {

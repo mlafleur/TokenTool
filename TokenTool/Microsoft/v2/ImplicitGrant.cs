@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace TokenTool.MicrosoftV1
+namespace TokenTool.Microsoft.v2
 {
-    public class ImplicitGrant : v1EndpointBase
+    public class ImplicitGrant : V2EndpointBase
     {
         public ImplicitGrant()
         {
             this.Tenant = "common";
+            this.Scope = "https://graph.microsoft.com/.default";
             this.ResponseType = "token";
             this.ResponseMode = "fragment";
             this.GrantType = "authorization_code";
@@ -26,9 +28,9 @@ namespace TokenTool.MicrosoftV1
         public string Nonce { get; set; }
         public string Prompt { get; set; }
         public string RedirectUri { get; set; }
-        public string Resource { get; set; }
         public string ResponseMode { get; }
         public string ResponseType { get; set; }
+        public string Scope { get; set; }
         public string State { get; set; }
         public string Tenant { get; set; }
 
@@ -48,7 +50,7 @@ namespace TokenTool.MicrosoftV1
             {
                 { "client_id", ClientId },
                 { "response_type", ResponseType },
-                { "resource", Resource },
+                { "scope", Scope },
                 { "redirect_uri", RedirectUri },
                 { "response_mode", ResponseMode },
                 { "state", State },
@@ -57,6 +59,12 @@ namespace TokenTool.MicrosoftV1
                 { "domain_hint", DomainHint },
                 { "nonce", Nonce }
             };
+
+            // Validate we have the required keys
+            var requiredKeys = new List<string>() { "client_id", "response_type", "scope" };
+            if (queryParams.ValidateKeys(requiredKeys) == false)
+                throw new MissingFieldException($"One or more required parameters are missing or empty: {string.Join(",", requiredKeys.ToArray())}");
+
             return BaseAuthorizationUri(queryParams, Tenant);
         }
     }

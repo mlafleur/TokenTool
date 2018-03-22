@@ -4,20 +4,77 @@
     ViewData["Title"] = "Home page";
 }
 
-<h1>TokenTool Test Harrness</h1>
+<div class="container" style="margin-top: 50px;">
+
+    <h1>TokenTool Test Harrness</h1>
+
+    <div class="container" style="margin-top: 50px;">
+        <h2>v1 Endpoint</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Authorization Code Grant</h5>
+                        <p class="card-text"></p>
+                        <a href="@Model.V1AuthUri" class="btn btn-primary">Start OAuth Flow</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Implicit Grant</h5>
+                        <p class="card-text"></p>
+                        <a href="@Model.V1ImplicitUri" class="btn btn-primary">Start OAuth Flow</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<h2>v1 Endpoint</h2>
-<ul>
-    <li><a href="@Model.V1AuthUri">Authorization Code Grant</a></li>
-    <li><a href="@Model.V1ImplicitUri">Implicit Grant</a></li>
-</ul>
+    <div class="container" style="margin-top: 50px;">
+        <h2>v2 Endpoint</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Authorization Code Grant</h5>
+                        <p class="card-text"></p>
+                        <a href="@Model.V2AdminUri" class="btn btn-primary">Start OAuth Flow</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Implicit Grant</h5>
+                        <p class="card-text"></p>
+                        <a href="@Model.V2OpenIdUri" class="btn btn-primary">Start OAuth Flow</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Admin Consent</h5>
+                        <p class="card-text"></p>
+                        <a href="@Model.V2AdminUri" class="btn btn-primary">Start OAuth Flow</a>
+                    </div>
+                </div>
+            </div>
 
-<h2>v2 Endpoint</h2>
-<ul>
-    <li><a href="@Model.V2AdminUri">Admin Consent</a></li>
-    <li><a href="@Model.V2AuthUri">Authorization Code Grant</a></li>
-    <li><a href="@Model.V2ImplicitUri">Implicit Grant (Token)</a></li>
-    <li><a href="@Model.V2OpenIdUri">Implicit Grant (OpenId Connect)</a></li>
-    <li><a href="http://localhost:64191/auth/cc">Client Credentials</a></li>
-</ul>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Client Credentials Grant</h5>
+                        <p class="card-text"></p>
+                        <a href="http://localhost:64191/auth/cc" class="btn btn-primary">Start OAuth Flow</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

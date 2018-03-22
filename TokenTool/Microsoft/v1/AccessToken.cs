@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TokenTool.MicrosoftV1
+namespace TokenTool.Microsoft.v1
 {
     public class AccessToken : Common.OAuthTokenBase
     {
