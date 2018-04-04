@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <Authors>Marc LaFleur</Authors>
+    <Company>Marc LaFleur</Company>
+    <Product>TokenTools</Product>
+    <Copyright>2018 by Marc LaFleur</Copyright>
+    <RepositoryUrl>https://github.com/mlafleur/TokenTool.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Set of utilities for retrieving and processing OAuth tokens for the Microsoft v2 Endpoint (aka Azure AD v2 Endpoint)</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JWT" Version="4.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TokenTools.Core\TokenTools.Core.csproj" />
+    <ProjectReference Include="..\TokenTools.Utils\TokenTools.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TokenTool.Microsoft.AdminConsent;
+using TokenTools.Microsoft.AdminConsent;
 
 namespace Dotnet_AuthCode_WebApp.Pages
 {

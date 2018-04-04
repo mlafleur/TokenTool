@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
-using TokenTool.Microsoft;
-using TokenTool.Microsoft.AuthorizationCodeGrant;
+using TokenTools.Microsoft;
+using TokenTools.Microsoft.AuthorizationCodeGrant;
 
 namespace Dotnet_AuthCode_WebApp.Pages
 {
@@ -39,8 +39,8 @@ namespace Dotnet_AuthCode_WebApp.Pages
 
             AuthorizationUri = authorizationRequest.GenerateAuthorizationUri();
 
-            TokenTool.Microsoft.AdminConsent.AdminConsentRequest adminConsentRequest =
-                new TokenTool.Microsoft.AdminConsent.AdminConsentRequest(applicationRegistration.ClientId, "http://localhost:64191/AdminConsent");
+            TokenTools.Microsoft.AdminConsent.AdminConsentRequest adminConsentRequest =
+                new TokenTools.Microsoft.AdminConsent.AdminConsentRequest(applicationRegistration.ClientId, "http://localhost:64191/AdminConsent");
             AdminConsentUri = adminConsentRequest.GenerateAuthorizationUri();
         }
     }

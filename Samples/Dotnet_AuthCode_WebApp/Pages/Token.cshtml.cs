@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
-using TokenTool.Microsoft;
-using TokenTool.Microsoft.AuthorizationCodeGrant;
+using TokenTools.Microsoft;
+using TokenTools.Microsoft.AuthorizationCodeGrant;
 
 namespace Dotnet_AuthCode_WebApp.Pages
 {

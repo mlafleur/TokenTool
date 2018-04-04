@@ -10,6 +10,6 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TokenTool\TokenTool.csproj" />
+    <ProjectReference Include="..\..\TokenTools\TokenTools.csproj" />
   </ItemGroup>
 </Project>

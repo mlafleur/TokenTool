@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TokenTool\TokenTool.csproj" />
+    <ProjectReference Include="..\..\TokenTools\TokenTools.csproj" />
   </ItemGroup>
 
 </Project>

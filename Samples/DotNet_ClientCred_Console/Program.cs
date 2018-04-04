@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using TokenTool.Microsoft.ClientCredentialsGrant;
+using TokenTools.Microsoft.ClientCredentialsGrant;
 
 namespace DotNet_ClientCred_Console
 {
@@ -8,7 +8,7 @@ namespace DotNet_ClientCred_Console
     {
         private static void Main(string[] args)
         {
-            var appReg = new TokenTool.Microsoft.ApplicationRegistration()
+            var appReg = new TokenTools.Microsoft.ApplicationRegistration()
             {
                 ClientId = "c5b373fb-7e75-4620-81e9-161c8704b838",
                 ClientSecret = "fdPKI740^lpmosPDLD51@[:"

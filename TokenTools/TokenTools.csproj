@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.5</Version>
+    <Authors>Marc LaFleur</Authors>
+    <Company>Marc LaFleur</Company>
+    <Product>TokenTools</Product>
+    <Copyright>2018 by Marc LaFleur</Copyright>
+    <RepositoryUrl>https://github.com/mlafleur/TokenTool.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Set of utilities for retrieving and processing OAuth tokens</Description>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\TokenTools.AzureAd\TokenTools.AzureAd.csproj" />
+    <ProjectReference Include="..\TokenTools.Core\TokenTools.Core.csproj" />
+    <ProjectReference Include="..\TokenTools.Microsoft\TokenTools.Microsoft.csproj" />
+    <ProjectReference Include="..\TokenTools.Utils\TokenTools.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
