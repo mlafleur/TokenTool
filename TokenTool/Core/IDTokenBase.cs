@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace TokenTool.Common
+namespace TokenTool.Core
 {
     public abstract class IDTokenBase
     {

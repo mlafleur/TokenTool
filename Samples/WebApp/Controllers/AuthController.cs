@@ -32,7 +32,7 @@ namespace WebApp.Controllers
                 ClientId = config["v1Endpoint:clientId"],
                 ClientSecret = config["v1Endpoint:clientSecret"],
                 Scope = config["v1Endpoint:scopes"],
-                RedirectUri = "http://localhost:64191/auth/v1authcode",
+                RedirectUri = "http://localhost:64191/auth/authcode",
                 Resource = "https://graph.microsoft.com"
             };
 

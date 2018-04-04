@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TokenTool.Microsoft
 {
-    public class IDToken : Common.IDTokenBase
+    public class IDToken : Core.IDTokenBase
     {
         /// <summary>
         /// The access token hash is included in ID tokens only when the ID token is issued with an OAuth 2.0 access token. It can be used to validate the authenticity of an access token.

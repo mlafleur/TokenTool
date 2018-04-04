@@ -14,12 +14,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\**" />
     <Compile Remove="MicrosoftV1\**" />
     <Compile Remove="MicrosoftV2\**" />
+    <Compile Remove="Microsoft\Options\**" />
+    <Compile Remove="Microsoft\v1\**" />
+    <Compile Remove="Microsoft\v2\**" />
+    <Compile Remove="scratch\**" />
+    <EmbeddedResource Remove="Common\**" />
     <EmbeddedResource Remove="MicrosoftV1\**" />
     <EmbeddedResource Remove="MicrosoftV2\**" />
+    <EmbeddedResource Remove="Microsoft\Options\**" />
+    <EmbeddedResource Remove="Microsoft\v1\**" />
+    <EmbeddedResource Remove="Microsoft\v2\**" />
+    <EmbeddedResource Remove="scratch\**" />
+    <None Remove="Common\**" />
     <None Remove="MicrosoftV1\**" />
     <None Remove="MicrosoftV2\**" />
+    <None Remove="Microsoft\Options\**" />
+    <None Remove="Microsoft\v1\**" />
+    <None Remove="Microsoft\v2\**" />
+    <None Remove="scratch\**" />
   </ItemGroup>
 
   <ItemGroup>

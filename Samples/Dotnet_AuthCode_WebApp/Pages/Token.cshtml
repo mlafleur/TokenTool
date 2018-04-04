@@ -1,0 +1,37 @@
+﻿@page
+@model Dotnet_AuthCode_WebApp.Pages.TokenModel
+@{
+    ViewData["Title"] = "Token";
+}
+
+<div class="container" style="margin-top: 50px;">
+
+    <h1>Token</h1>
+
+    <dl>
+        <dt>Token Type</dt>
+        <dd>@Model.TokenResponse.TokenType</dd>
+
+        <dt>Scopes</dt>
+        <dd>@Model.TokenResponse.Scope</dd>
+
+        <dt>Access Token</dt>
+        <dd>@Model.TokenResponse.AccessToken</dd>
+
+        <dt>Refresh Token</dt>
+        <dd>@Model.TokenResponse.RefreshToken</dd>
+
+        <dt>ID Token</dt>
+        <dd>@Model.TokenResponse.IdToken</dd>
+
+        <dt>State</dt>
+        <dd>@Model.TokenResponse.State</dd>
+    </dl>
+
+    <a class="btn btn-primary" asp-page-handler="refresh" asp-route-id="@Model.TokenResponse.RefreshToken" role="button">Refresh Token</a>
+
+    <button type="submit" class="btn btn-primary" asp-page-handler="refresh" asp-route-id="@Model.TokenResponse.RefreshToken">Refresh</button>
+    <a class="btn btn-primary" href="http://jwt.ms/#access_token=@Model.TokenResponse.AccessToken" target="_blank" role="button">Decode Access Token</a>
+    <a class="btn btn-primary" href="http://jwt.ms/#id_token=@Model.TokenResponse.IdToken" target="_blank" role="button">Decode ID Token</a>
+</div>
+

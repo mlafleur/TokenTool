@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container" style="margin-top: 50px;">
+
+    <h1>Authorization Code Grant</h1>
+
+    <div>
+        <a class="button button-primary" href="@Model.AuthorizationUri">Login with Microsoft</a>
+    </div>
+
+    <div>
+        <a class="button button-info small muted" href="@Model.AdminConsentUri">(Request Admin Consent)</a>
+    </div>
+</div>

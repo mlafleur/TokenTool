@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TokenTool.Common
+namespace TokenTool.Core
 {
     public abstract class OAuthTokenBase
     {

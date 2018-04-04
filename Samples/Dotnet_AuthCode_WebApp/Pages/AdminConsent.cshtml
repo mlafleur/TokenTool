@@ -1,0 +1,21 @@
+﻿@page
+@model Dotnet_AuthCode_WebApp.Pages.AdminConsentModel
+@{
+    ViewData["Title"] = "AdminConsent";
+}
+
+<div class="container" style="margin-top: 50px;">
+
+    <h1>Admin Consent</h1>
+
+    <dl>
+        <dt>Admin Consented</dt>
+        <dd>@Model.AdminConsentResponse.AdminConsented</dd>
+
+        <dt>Tenant</dt>
+        <dd>@Model.AdminConsentResponse.Tenant</dd>
+
+        <dt>State</dt>
+        <dd>@Model.AdminConsentResponse.State</dd>
+    </dl>
+</div>

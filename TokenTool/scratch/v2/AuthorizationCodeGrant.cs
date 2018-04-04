@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TokenTool.Common;
+using TokenTool.Core;
 using TokenTool.Utils;
 
 namespace TokenTool.Microsoft.v2

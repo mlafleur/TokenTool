@@ -2,7 +2,7 @@
 
 namespace TokenTool.Microsoft.v1
 {
-    public class AccessToken : Common.OAuthTokenBase
+    public class AccessToken : Core.OAuthTokenBase
     {
         [JsonProperty(PropertyName = "expires_on")]
         public int ExpiresOn { get; set; }
