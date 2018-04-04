@@ -14,7 +14,7 @@ namespace DotNet_ClientCred_Console
                 ClientSecret = "fdPKI740^lpmosPDLD51@[:"
             };
 
-            var tokenRequest = new TokenRequest(appReg);
+            var tokenRequest = new ClientCredentialsRequest(appReg);
             var tokenResponse = tokenRequest.RequestToken().Result;
 
             Console.WriteLine("Token Response:");

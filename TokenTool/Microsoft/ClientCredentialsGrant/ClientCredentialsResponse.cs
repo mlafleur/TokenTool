@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TokenTool.Microsoft.ClientCredentialsGrant
 {
-    public class TokenResponse
+    public class ClientCredentialsResponse
     {
         private Dictionary<string, object> _accessTokenClaims;
 

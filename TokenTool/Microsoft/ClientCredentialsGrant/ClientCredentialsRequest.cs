@@ -10,11 +10,11 @@ using TokenTool.Utils;
 
 namespace TokenTool.Microsoft.ClientCredentialsGrant
 {
-    public class TokenRequest
+    public class ClientCredentialsRequest
     {
         private HttpClient _httpClient;
 
-        public TokenRequest(ApplicationRegistration applicationRegistration, [Optional]HttpClient httpClient)
+        public ClientCredentialsRequest(ApplicationRegistration applicationRegistration, [Optional]HttpClient httpClient)
         {
             if (httpClient == null) _httpClient = new HttpClient();
             else _httpClient = httpClient;
@@ -54,7 +54,7 @@ namespace TokenTool.Microsoft.ClientCredentialsGrant
         /// </summary>
         public string Tenant { get; set; } = "common";
 
-        public async Task<TokenResponse> RequestToken()
+        public async Task<ClientCredentialsResponse> RequestToken()
         {
             var payload = new QueryParameterCollection
             {
@@ -91,7 +91,7 @@ namespace TokenTool.Microsoft.ClientCredentialsGrant
             if (httpResponse.IsSuccessStatusCode)
             {
                 string httpContent = await httpResponse.Content.ReadAsStringAsync();
-                TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(httpContent);
+                ClientCredentialsResponse tokenResponse = JsonConvert.DeserializeObject<ClientCredentialsResponse>(httpContent);
                 return tokenResponse;
             }
             else
